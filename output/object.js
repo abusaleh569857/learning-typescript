@@ -8,3 +8,4 @@ function printInfo(user) {
     console.log(`Id : ${user.id} and Name : ${user.name} `);
 }
 printInfo(user);
+printInfo({ id: 124, name: "Alam" });

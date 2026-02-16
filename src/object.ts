@@ -14,3 +14,4 @@ function printInfo(user:User):void{
 }
 
 printInfo(user)
+printInfo({id : 124, name : "Alam"})
