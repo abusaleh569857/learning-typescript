@@ -31,4 +31,14 @@ const productsData = [
         reviews: [["John", 5], ["Doe", 2], ["Smith", 4]],
     }
 ];
-console.log('Products : ', productsData);
+function findProducts(products) {
+    const productsData = products.filter((p) => p.status === 'instock' && p.metadata?.discount).map((p) => {
+        let discount = p.metadata?.discount || 0;
+        let finalPrice = p.price - (p.price * discount / 100);
+        console.log(`Item : ${p.name} & Discount : ${p.metadata?.discount} & Price : ${p.price} & Final Price : ${finalPrice}`);
+        return ({ name: p.name, finalPrice: finalPrice });
+    });
+    return productsData;
+}
+const data = findProducts(productsData);
+console.log(data);

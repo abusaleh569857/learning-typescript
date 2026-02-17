@@ -51,6 +51,28 @@ const productsData : Products[] = [
   }
 ]
 
+interface ProductInfo{
+    name : string,
+    finalPrice : number,
+}
 
-console.log('Products : ', productsData);
+
+
+
+function findProducts(products : Products[]):ProductInfo[] {
+   
+     const productsData = products.filter((p) => p.status === 'instock' && p.metadata?.discount).map((p) => {
+        let discount:number = p.metadata?.discount || 0;
+        let finalPrice:number = p.price - (p.price * discount/100)
+         console.log(`Item : ${p.name} & Discount : ${p.metadata?.discount} & Price : ${p.price} & Final Price : ${finalPrice}`);
+        return ({name : p.name, finalPrice : finalPrice})
+    });
+   
+    return productsData;
+
+}
+
+
+const data = findProducts(productsData);
+console.log(data);
 
